@@ -1,25 +1,4 @@
 
-// MeOw Station Ultrasonic Distance Sensor Data Logging v.6
-
-// Takes readings from two Maxbotix MB7389 sonars, one for water elevation and one for bed elevation, and 
-// prints it on the serial monitor; records data on microSD card; puts Mayfly to sleep in between samples.
-
-// v.6 Uses a SSD1306 OLED display connected to the Mayfly's I2C Grove connector
-
-// Bed-Level Sensor
-// Sonar 7 (Ground) to Mayfly Grnd
-// Sonar 6 (Excite) to Mayfly D6
-// Sonar 5 (Serial) to Mayfly D10
-
-// Water-Level Sensor
-// Sonar 7 (Ground) to Mayfly Grnd
-// Sonar 6 (Excite) to Mayfly D7
-// Sonar 5 (Serial) to Mayfly D11
-
-// Ian Reeves 
-// 30 August 2018
-
-
 /////////////////////////////////////////////  SET DATA HEADER  //////////////////////////////////////////////
 
 #define LOGGERNAME "MeOw Station [5]"
@@ -50,8 +29,8 @@ const int SonarExcite_Water = 7;
 SoftwareSerial sonarSerial_Bed(10, -1);
 SoftwareSerial sonarSerial_Water(11, -1);      
  
-boolean stringComplete_Bed = false;
-boolean stringComplete_Water = false;
+bool stringComplete_Bed = false;
+bool stringComplete_Water = false;
  
 #define READ_DELAY 1
  
@@ -128,11 +107,7 @@ void setup()
   
   Serial.println("Power On, running");
   Serial.println("Date,Time,UnixTime,BoardTemp_C,Battery_V,SonarRange_Bed_mm,SonarRange_Water_mm");
-
-}
-
-void loop() 
-{   
+  
   //Update the timer 
   timer.update();
   
